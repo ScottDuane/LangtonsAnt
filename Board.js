@@ -9,13 +9,14 @@
     this.generation = 0;
     this.antLocation = [50, 50];
     this.antDirection = [0, 1];
+    this.ants = [];
     this.numX = options.numX;
     this.numY = options.numY;
     this.antLocationColor = null;
     this.prevLocation = null;
     this.grid = [];
-    this.colorNumber = 2;
-    this.colors = ["#ddd", "#d0d"]
+    this.colorNumber = 4;
+    this.colors = ["#000", "#4b0082", "#0000cd", "#008000", "#ffff00", "#ff4500", "#ff0000", "#800080"]
     this.generateGrid();
   };
 
@@ -30,46 +31,14 @@
 
   Board.prototype.setAntLocation = function(location) {
   //  this.grid[this.antLocation[0]][this.antLocation[1]] = '0';
-    this.antLocation = location;
-  //  this.grid[location[0]][location[1]] = 'A';
+    var ant = new LangtonsAnt.Ant({location: location, board: this});
+    this.ants.push(ant);
   };
 
   Board.prototype.step = function() {
-    // record color of ant location
-    // record ant direction
-    var oldColor = this.grid[this.antLocation[0]][this.antLocation[1]];
-    this.grid[this.antLocation[0]][this.antLocation[1]] = (oldColor + 1) % this.colorNumber;
-    var newDirection = null;
-    if(oldColor % 2 === 0) {
-      if(this.antDirection[0] === 1 && this.antDirection[1] === 0) {
-        newDirection = [0,-1];
-      } else if (this.antDirection[0] === 0 && this.antDirection[1] === 1) {
-        newDirection = [1, 0];
-      } else if (this.antDirection[0] === -1 && this.antDirection[1] === 0) {
-        newDirection = [0, 1];
-      } else if (this.antDirection[0] === 0 && this.antDirection[1] === -1) {
-        newDirection = [-1, 0];
-      }
-    } else {
-      if(this.antDirection[0] === 1 && this.antDirection[1] === 0) {
-        newDirection = [0, 1];
-      } else if (this.antDirection[0] === 0 && this.antDirection[1] === 1) {
-        newDirection = [-1, 0];
-      } else if (this.antDirection[0] === -1 && this.antDirection[1] === 0) {
-        newDirection = [0, -1];
-      } else if (this.antDirection[0] === 0 && this.antDirection[1] === -1) {
-        newDirection = [1, 0];
-      }
-    }
-
-    this.antDirection = newDirection;
-    this.antLocation[0] += this.antDirection[0];
-    this.antLocation[1] += this.antDirection[1];
-    // use color of ant location to decide where to move next
-    // change color of ant location
-    // change ant direction
-
-
+    this.ants.forEach(function(ant) {
+      ant.step();
+    })
   };
 
   Board.prototype.draw = function(ctx, offset, numSquares, squareSize) {
