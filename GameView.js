@@ -23,12 +23,23 @@
   View.LINE_COLOR = "#999";
 
   View.prototype.bindEvents = function() {
+    $(this.canvas).click(this.handleClickEvent.bind(this));
+  };
 
-  }
+  View.prototype.handleClickEvent = function() {
+    var rectangle = this.canvas.getBoundingClientRect();
+    var mousePosition = {x: event.clientX - rectangle.left, y: event.clientY - rectangle.top};
+    var offsetX = (this.board.numX - Math.floor(this.numX - this.numX % 2))/2;
+    var offsetY = (this.board.numY - Math.floor(this.numY - this.numY % 2))/2;
+    var xLim = offsetX + Math.floor((mousePosition.x - this.numX % 2/2*this.squareSize)/this.squareSize);
+    var yLim = offsetY + Math.floor((mousePosition.y - this.numY % 2/2*this.squareSize)/this.squareSize);
+    this.board.setAntLocation([xLim, yLim]);
+  };
 
   View.prototype.start = function() {
     var that = this;
     setInterval(function() {
+      that.board.step();
       that.draw();
     }, 10)
   };
