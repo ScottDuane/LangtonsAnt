@@ -1,0 +1,111 @@
+(function(){
+  if (typeof window.LangtonsAnt === "undefined") {
+    var LangtonsAnt = window.LangtonsAnt = {};
+  }
+
+  var LangtonsAnt = window.LangtonsAnt;
+
+  var Menu = LangtonsAnt.Menu = function (options) {
+    this.board = options.board;
+    var $body = $('body');
+    this.$startButton = $body.find('.start-button');
+    this.$stopButton = $body.find('.stop-button');
+    this.$stepButton = $body.find('.step-button');
+    this.$resetButton = $body.find('.reset-button');
+    this.$instructionsButton = $body.find('.instructions-button');
+    this.$zoomBar = $body.find('#zoom-bar');
+    this.$speedBar = $body.find('#speed-bar');
+    this.$numColorsBar = $body.find('#num-colors-bar');
+    this.timerId = null;
+    this.mode = "paused";
+    this.speed = 100;
+    this.bindClickHandlers();
+  };
+
+  Menu.prototype.bindClickHandlers = function () {
+
+    this.$startButton.click(this.startGame.bind(this));
+    this.$stopButton.click(this.stopGame.bind(this));
+    this.$stepButton.click(this.stepGame.bind(this));
+    this.$resetButton.click(this.resetGame.bind(this));
+    // this.$placeAntButton.click(this.toggleAntPlacement.bind(this));
+    // this.
+
+    this.$instructionsButton.click(this.showInstructions.bind(this));
+    this.$speedBar.on('input', this.changeSpeed.bind(this));
+    this.$numColorsBar.on('input', this.changeNumColors.bind(this));
+  };
+
+  Menu.prototype.startGame = function () {
+
+    if (this.mode !== "running") {
+      this.board.mode = "running";
+      this.mode = "running";
+      if(this.board.ants.length === 0) {
+        this.board.setAntLocation([50, 50]);
+      }
+      this.timerId = setInterval(this.runGame.bind(this), this.speed);
+    }
+  };
+
+  Menu.prototype.runGame = function () {
+    this.board.step();
+  };
+
+  Menu.prototype.stopGame = function () {
+    if (this.mode !== "paused") {
+      this.board.mode = "paused";
+      this.mode = "paused";
+      window.clearInterval(this.timerId);
+    }
+  };
+
+  Menu.prototype.stepGame = function () {
+    if (this.mode !== "running") {
+      this.board.step();
+    }
+  };
+
+  Menu.prototype.resetGame = function () {
+    this.board.mode = "paused";
+    this.mode = "paused";
+    window.clearInterval(this.timerId);
+    this.board.reset();
+  };
+
+  Menu.prototype.changeSpeed = function () {
+    var newSpeed = this.$speedBar.val();
+    this.speed = 3000/newSpeed;
+    $('.speed').text(this.speed);
+    if (this.mode === "running") {
+      window.clearInterval(this.timerId);
+      this.timerId = setInterval(this.runGame.bind(this), this.speed);
+    }
+  };
+
+  Menu.prototype.changeNumColors = function (event) {
+    var newNumColors = this.$numColorsBar.val();
+    $('#num-colors-status').text(newNumColors);
+    this.board.mode = "paused";
+    this.mode = "paused";
+    this.board.colorNumber = parseInt(newNumColors);
+    window.clearInterval(this.timerId);
+    this.board.reset();
+  };
+
+  Menu.prototype.showInstructions = function () {
+    if (this.scrolling) {return;}
+    this.scrolling = true;
+    $('html,body').animate(
+      {
+        scrollTop: $("#instructions-tab").offset().top
+      },
+      {
+        duration: 'slow',
+        complete: function () {
+          this.scrolling = false;
+        }.bind(this)
+      }
+    );
+  };
+})();

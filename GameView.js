@@ -19,8 +19,8 @@
   View.CANVAS_DIM_X = 1000;
   View.CANVAS_DIM_Y = 600;
   View.ACTIVE_COLOR = '#ff0';
-  View.BG_COLOR = "#ddd";
-  View.LINE_COLOR = "#999";
+  View.BG_COLOR = "#333";
+  View.LINE_COLOR = "#ff0";
 
   View.prototype.bindEvents = function() {
     $(this.canvas).click(this.handleClickEvent.bind(this));
@@ -39,7 +39,6 @@
   View.prototype.start = function() {
     var that = this;
     setInterval(function() {
-      that.board.step();
       that.draw();
     }, 10)
   };

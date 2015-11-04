@@ -1,0 +1,151 @@
+html, body, section, article,
+h1, h2, p, strong, em, a {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: center;
+  color: inherit;
+  background: transparent;
+}
+
+.header-text {
+  position: relative;
+  height: 125px;
+}
+
+.ant-image {
+  position: relative;
+  float: right;
+  height: 125px;
+  margin-right: 100px;
+}
+
+.ant-2-image {
+  position: relative;
+  float: left;
+  height: 125px;
+  margin-left: 50px;
+}
+body {
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+canvas {
+  // background: black;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.menu-bar-container {
+  color: #444;
+}
+
+button {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 50px;
+  font-size: 18px;
+  border: none;
+  border-radius: 15px;
+  width: 120px;
+  height: 40px;
+  z-index: 1;
+  cursor: pointer;
+  // font-family: 'Josefin Sans', sans-serif;
+  // :hover {
+  //   background-color: #ddd;
+  // }
+}
+
+.title-header {
+  font-family: 'Righteous', cursive;
+  font-size: 45px;
+  padding-top: 23px;
+  margin-left: 325px;
+  position: absolute;
+  color: #332;
+  float: left;
+}
+
+.subheader {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 23px;
+  float: left;
+  padding-top: 73px;
+  margin-left: 354px;
+  position: absolute;
+  color: #332;
+}
+
+#start-button {
+  background-color: #00CC00;
+}
+
+#start-button:hover {
+  background-color: #C6FFC6;
+  border: #00CC00 solid 2px;
+
+}
+#stop-button {
+  background-color: #FF3300;
+}
+
+#stop-button:hover {
+  background-color: #FFC2B3;
+  border: #FF3300 solid 2px;
+}
+#reset-button {
+  background-color: #0066FF;
+}
+
+#reset-button:hover {
+  background-color: #B3D1FF;
+  border: #0066FF solid 2px;
+}
+
+#step-button {
+  background-color: #FFD633;
+}
+
+#step-button:hover {
+  background-color: #FFF5CC;
+  border: #FFD633 solid 2px;
+}
+
+#instructions-button {
+  background-color: #9641E5;
+  z-index: 2;
+}
+
+#instructions-button:hover {
+  background-color: #EDDEFB;
+  border: #9641E5 solid 2px;
+
+}
+.input-range-row {
+  display: inline;
+  position: relative;
+}
+
+.input-range-row li {
+  display: inline;
+  position: relative;
+  margin-right: 29px;
+}
+
+.generation-counter {
+  display: block;
+}
+
+.counter {
+  display: inline;
+}
+
+.button-row {
+  margin-bottom: 15px;
+  margin-left: -46px;
+}

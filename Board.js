@@ -16,6 +16,7 @@
     this.prevLocation = null;
     this.grid = [];
     this.colorNumber = 4;
+    this.mode = "paused";
     this.colors = ["#000", "#4b0082", "#0000cd", "#008000", "#ffff00", "#ff4500", "#ff0000", "#800080"]
     this.generateGrid();
   };
@@ -30,7 +31,6 @@
   };
 
   Board.prototype.setAntLocation = function(location) {
-  //  this.grid[this.antLocation[0]][this.antLocation[1]] = '0';
     var ant = new LangtonsAnt.Ant({location: location, board: this});
     this.ants.push(ant);
   };
@@ -46,13 +46,12 @@
     var offsetY = (this.numY - Math.floor(numSquares[1] - numSquares[1] % 2)) / 2;
 
     var that = this;
-    // console.log(this.antLocation);
+
     this.grid.forEach(function(row, i){
       row.forEach(function(cell, j) {
         ctx.fillStyle = that.colors[that.grid[i][j]];
         ctx.fillRect((i - offsetX) * squareSize + offset[0], (j - offsetY) * squareSize + offset[1], squareSize, squareSize);
 
-        // debugger;
         if(that.antLocation[0] === i && that.antLocation[1] === j) {
           ctx.font = "8px Arial";
           ctx.strokeText("A", (i - offsetX) * squareSize + offset[0] + squareSize/10, (j - offsetY) * squareSize + offset[1] + squareSize*0.9);
