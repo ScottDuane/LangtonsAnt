@@ -61,6 +61,10 @@ button {
   // }
 }
 
+button:focus {
+  outline: none;
+}
+
 .title-header {
   font-family: 'Righteous', cursive;
   font-size: 45px;
@@ -143,9 +147,49 @@ button {
 
 .counter {
   display: inline;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 .button-row {
   margin-bottom: 15px;
   margin-left: -46px;
+}
+
+.instructions-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #100;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 3;
+  // display: none;
+  transition-property: opacity;
+  transition: 0.2s ease-in-out;
+}
+
+.instructions-box {
+  position: fixed;
+  background-color: #ddd;
+  margin-top: 5%;
+  margin-right: 15%;
+  margin-left: 15%;
+  margin-bottom: 5%;
+  padding-top: 25px;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 25px;
+  border-radius: 10px;
+  border: #bbb solid 2px;
+  z-index: 4;
+  text-align: left;
+}
+
+#instructing {
+  // display: block;
+  visibility: visible;
+  opacity: 0.9;
+  z-index: 3;
 }

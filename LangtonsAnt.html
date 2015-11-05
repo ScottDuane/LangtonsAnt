@@ -14,6 +14,42 @@
     <script src="./Board.js"></script>
     <script src="./Ant.js"></script>
     <script src="./Menu.js"></script>
+    <div class="instructions-container">
+      <div class="instructions-box">
+        <h1 class="inst-title">Background</h1>
+        <p class="inst-body">Welcome to this simple implementation of an elegant idea.  Langton's Ant was created by Chris Langton in 1986, and is an example of a cellular automaton.
+          Under Langton's original design, the "ant" begin its journey on a grid with squares that are colored white or black.  It follows two simple rules:
+          <ul class="rule-list">
+            <li>If the square is white, the ant turns 90 degrees right, changes the color of the square to black, and moves forward 1 unit.</li>
+            <li>If the square is black, the ant turns 90 degrees left, changes the color of the square to white, and moves forward 1 unit.</li>
+          </ul>
+          Some really interesting mathematical things can be shown and observed about Langton's Ant.  Read more <a href="https://en.wikipedia.org/wiki/Langton%27s_ant">here</a>.
+        </p>
+
+        <h1 class="inst-title">Generalizations</h1>
+
+        <p class="inst-body">
+          This engine has incorporated two generalizations that Langton's original does not include.
+          <ul class="rule-list">
+            <li>Multiple colors: the engine can use up to 8 different color states.  These colors are stored as a list, and the ant loops through the list to decide which color it will change its current square to.</li>
+            <li>Multiple ants: the engine can accommodate an arbitrarily large number of ants.  If two ants end up on the same square, they make their changes and turns in the order they were created.</li>
+          </ul>
+        </p>
+
+        <h1 class="inst-title">Using This Engine</h1>
+
+        <p class="inst-body">
+          <strong>Start:</strong> sets off the ant's movement.  If you've added ants, the engine will use these.  If you've added none, it will add one ant in the middle of the grid.
+          <br />
+          <strong>Stop:</strong> pauses the ant movement.
+          <br />
+          <strong>Step:</strong> sets off one iteration of ant movement.
+          <br />
+          <strong>Reset:</strong> clears the board of all ants, and sets all squares back to their original state.
+        </p>
+      </div>
+    </div>
+
     <div class="header-text">
       <img src="./singleton_ant.jpg" class="ant-image" />
       <img src="./ant2.jpg" class="ant-2-image"/>
@@ -24,16 +60,13 @@
       <div class="menu-bar">
         <div class="top-row">
           <div class="button-row">
-            <button type="button" id="start-button">Start</button>
-            <button type="button" id="stop-button">Stop</button>
-            <button type="button" id="step-button">Step</button>
-            <button type="button" id="reset-button">Reset</button>
-            <button type="button" id="instructions-button">Instructions</button>
+            <button type="button" class="start-button" id="start-button">Start</button>
+            <button type="button" class="stop-button" id="stop-button">Stop</button>
+            <button type="button" class="step-button" id="step-button">Step</button>
+            <button type="button" class="reset-button" id="reset-button">Reset</button>
+            <button type="button" class="instructions-button" id="instructions-button">Instructions</button>
           </div>
           <ul class="input-range-row">
-            <li class="generation-counter">
-              Current Generation: <div class="counter">0</div>
-            </li>
             <li class="zoom-collection">
               <label for="zoom-bar">Zoom: </label><input type="range" class="slider" id="zoom-bar" min="0" max="100" value="0"/>
             </li>
@@ -41,12 +74,17 @@
               <label for="speed-bar">Speed: </label><input type="range" class="slider" id="speed-bar" min="10" max="1000" value="100"/>
             </li>
             <li class="color-collection">
-              <label for="color-range">Number of Colors: </label><input type="number" id="color-range" min="2" max="8"/>
+              <label for="color-range">Number of Colors: </label><input class="color-range" type="number" id="color-range" min="2" max="8"/>
+            </li>
+            <li class="generation-counter">
+              Current Generation: <div class="counter">0</div>
             </li>
           </ul>
         </div>
       </div>
     </div>
+
+
     <canvas id="canvasEl"></canvas>
     <script>
       $(document).ready(function() {

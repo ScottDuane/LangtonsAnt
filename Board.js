@@ -36,6 +36,7 @@
   };
 
   Board.prototype.step = function() {
+    this.generation += 1;
     this.ants.forEach(function(ant) {
       ant.step();
     })

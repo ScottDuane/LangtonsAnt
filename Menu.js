@@ -15,7 +15,9 @@
     this.$instructionsButton = $body.find('.instructions-button');
     this.$zoomBar = $body.find('#zoom-bar');
     this.$speedBar = $body.find('#speed-bar');
-    this.$numColorsBar = $body.find('#num-colors-bar');
+    this.$numColorsBar = $body.find('#color-range');
+    this.$generationCounter = $body.find('.counter');
+    this.$instructBackground = $body.find('.instructions-container');
     this.timerId = null;
     this.mode = "paused";
     this.speed = 100;
@@ -28,12 +30,14 @@
     this.$stopButton.click(this.stopGame.bind(this));
     this.$stepButton.click(this.stepGame.bind(this));
     this.$resetButton.click(this.resetGame.bind(this));
+    this.$numColorsBar.change(this.changeNumColors.bind(this));
+    this.$numColorsBar.on('keyup', this.changeNumColors.bind(this));
+    this.$instructBackground.click(this.hideInstructions.bind(this));
     // this.$placeAntButton.click(this.toggleAntPlacement.bind(this));
     // this.
 
     this.$instructionsButton.click(this.showInstructions.bind(this));
     this.$speedBar.on('input', this.changeSpeed.bind(this));
-    this.$numColorsBar.on('input', this.changeNumColors.bind(this));
   };
 
   Menu.prototype.startGame = function () {
@@ -50,6 +54,7 @@
 
   Menu.prototype.runGame = function () {
     this.board.step();
+    $('.counter').text(this.board.generation);
   };
 
   Menu.prototype.stopGame = function () {
@@ -63,6 +68,7 @@
   Menu.prototype.stepGame = function () {
     if (this.mode !== "running") {
       this.board.step();
+      $('.counter').text(this.board.generation);
     }
   };
 
@@ -94,18 +100,13 @@
   };
 
   Menu.prototype.showInstructions = function () {
-    if (this.scrolling) {return;}
-    this.scrolling = true;
-    $('html,body').animate(
-      {
-        scrollTop: $("#instructions-tab").offset().top
-      },
-      {
-        duration: 'slow',
-        complete: function () {
-          this.scrolling = false;
-        }.bind(this)
-      }
-    );
+
+    $('.instructions-container').attr('id', 'instructing');
+    // debugger
   };
+
+  Menu.prototype.hideInstructions = function() {
+    $('.instructions-container').attr('id', null);
+  }
+
 })();

@@ -18,7 +18,7 @@
 
   View.CANVAS_DIM_X = 1000;
   View.CANVAS_DIM_Y = 600;
-  View.ACTIVE_COLOR = '#ff0';
+  View.ACTIVE_COLOR = 'magenta';
   View.BG_COLOR = "#333";
   View.LINE_COLOR = "#ff0";
 
