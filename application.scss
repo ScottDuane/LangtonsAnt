@@ -183,13 +183,87 @@ button:focus {
   padding-bottom: 25px;
   border-radius: 10px;
   border: #bbb solid 2px;
-  z-index: 4;
+  z-index: 5;
   text-align: left;
+  max-height: 80%;
+  overflow: scroll;
+}
+
+.instructions-box a {
+  color: blue;
 }
 
 #instructing {
   // display: block;
   visibility: visible;
-  opacity: 0.9;
+  opacity: 0.98;
+  background-color: rgba(17, 0, 0, 0.6);
   z-index: 3;
+}
+
+.clickable {
+  z-index: 5;
+}
+.inst-body {
+  position: relative;
+  text-align: left;
+}
+
+.inst-title {
+  position: relative;
+  margin-bottom: 7px;
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 900;
+  color: black;
+}
+
+.start-word {
+  color: green;
+}
+
+.stop-word {
+  color: red;
+}
+
+.reset-word {
+  color: blue;
+}
+
+.click-word {
+  color: purple;
+}
+
+.step-word {
+  color: orange;
+}
+
+.instructions-background {
+  opacity: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 4;
+
+}
+
+#back-left{
+  margin-right: 85%;
+}
+
+#back-top {
+  width: 100%;
+  height: 18%;
+}
+
+#back-bottom {
+  margin-top: 95%;
+}
+
+#back-right {
+  margin-left: 85%;
+}
+
+#clickable {
+  z-index: 4;
 }

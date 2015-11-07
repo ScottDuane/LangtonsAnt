@@ -14,14 +14,22 @@
     <script src="./Board.js"></script>
     <script src="./Ant.js"></script>
     <script src="./Menu.js"></script>
+    <!-- <div class="instructions-background"></div> -->
+      <!-- <div id="back-top" class="instructions-background"></div> -->
     <div class="instructions-container">
+
+      <div id="back-left" class="instructions-background"></div>
+      <!-- <div id="back-right" class="instructions-background"></div>
+      <div id="back-bottom" class="instructions-background"></div> -->
+
       <div class="instructions-box">
+
         <h1 class="inst-title">Background</h1>
         <p class="inst-body">Welcome to this simple implementation of an elegant idea.  Langton's Ant was created by Chris Langton in 1986, and is an example of a cellular automaton.
-          Under Langton's original design, the "ant" begin its journey on a grid with squares that are colored white or black.  It follows two simple rules:
+          Under Langton's original design, the "ant" begins its journey on a grid with squares that are colored white or black.  It follows two simple rules:
           <ul class="rule-list">
-            <li>If the square is white, the ant turns 90 degrees right, changes the color of the square to black, and moves forward 1 unit.</li>
-            <li>If the square is black, the ant turns 90 degrees left, changes the color of the square to white, and moves forward 1 unit.</li>
+            <li>If the square is white, the ant turns 90&deg; right, changes the square to black, and moves forward 1 unit.</li>
+            <li>If the square is black, the ant turns 90&deg; left, changes the square to white, and moves forward 1 unit.</li>
           </ul>
           Some really interesting mathematical things can be shown and observed about Langton's Ant.  Read more <a href="https://en.wikipedia.org/wiki/Langton%27s_ant">here</a>.
         </p>
@@ -39,13 +47,16 @@
         <h1 class="inst-title">Using This Engine</h1>
 
         <p class="inst-body">
-          <strong>Start:</strong> sets off the ant's movement.  If you've added ants, the engine will use these.  If you've added none, it will add one ant in the middle of the grid.
-          <br />
-          <strong>Stop:</strong> pauses the ant movement.
-          <br />
-          <strong>Step:</strong> sets off one iteration of ant movement.
-          <br />
-          <strong>Reset:</strong> clears the board of all ants, and sets all squares back to their original state.
+          The controls for this engine are straightforward.
+          <ul>
+            <li><strong class="start-word">Start</strong> sets off the ant's movement.  If you've added ants, the engine will use these.  If you've added none, it will add one ant in the middle of the grid.</li>
+            <li><strong class="click-word">Clicking</strong> places a new ant in that location.</li>
+            <li><strong class="stop-word">Stop</strong> pauses the ant movement.</li>
+
+            <li><strong class="step-word">Step</strong> sets off one iteration of ant movement.</li>
+
+            <li><strong class="reset-word">Reset</strong> clears the board of all ants, and sets all squares back to their original state.</li>
+
         </p>
       </div>
     </div>
@@ -74,7 +85,7 @@
               <label for="speed-bar">Speed: </label><input type="range" class="slider" id="speed-bar" min="10" max="1000" value="100"/>
             </li>
             <li class="color-collection">
-              <label for="color-range">Number of Colors: </label><input class="color-range" type="number" id="color-range" min="2" max="8"/>
+              <label for="color-range">Number of Colors: </label><input class="color-range" default="3" type="number" id="color-range" min="2" max="8"/>
             </li>
             <li class="generation-counter">
               Current Generation: <div class="counter">0</div>

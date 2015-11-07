@@ -19,8 +19,8 @@
   View.CANVAS_DIM_X = 1000;
   View.CANVAS_DIM_Y = 600;
   View.ACTIVE_COLOR = 'magenta';
-  View.BG_COLOR = "#333";
-  View.LINE_COLOR = "#ff0";
+  View.BG_COLOR = "#ddd";
+  View.LINE_COLOR = "#444";
 
   View.prototype.bindEvents = function() {
     $(this.canvas).click(this.handleClickEvent.bind(this));
@@ -59,8 +59,8 @@
   };
 
   View.prototype.drawLines = function(offset) {
-    this.ctx.fillStyle = View.LINE_COLOR;
-
+    this.ctx.strokeStyle = View.LINE_COLOR;
+    // debugger;
     for (var i = 0; i < this.numX; i++) {
       this.ctx.beginPath();
       this.ctx.moveTo(this.squareSize*i + offset[0], 0);

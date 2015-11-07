@@ -17,15 +17,16 @@
     this.$speedBar = $body.find('#speed-bar');
     this.$numColorsBar = $body.find('#color-range');
     this.$generationCounter = $body.find('.counter');
-    this.$instructBackground = $body.find('.instructions-container');
+    this.$instructBackground = $body.find('.instructions-background');
     this.timerId = null;
     this.mode = "paused";
     this.speed = 100;
+    this.$top = $body.find('#back-top');
     this.bindClickHandlers();
   };
 
   Menu.prototype.bindClickHandlers = function () {
-
+    this.$top.click(this.hideInstructions.bind(this));
     this.$startButton.click(this.startGame.bind(this));
     this.$stopButton.click(this.stopGame.bind(this));
     this.$stepButton.click(this.stepGame.bind(this));
@@ -33,9 +34,6 @@
     this.$numColorsBar.change(this.changeNumColors.bind(this));
     this.$numColorsBar.on('keyup', this.changeNumColors.bind(this));
     this.$instructBackground.click(this.hideInstructions.bind(this));
-    // this.$placeAntButton.click(this.toggleAntPlacement.bind(this));
-    // this.
-
     this.$instructionsButton.click(this.showInstructions.bind(this));
     this.$speedBar.on('input', this.changeSpeed.bind(this));
   };
@@ -77,6 +75,7 @@
     this.mode = "paused";
     window.clearInterval(this.timerId);
     this.board.reset();
+    $('.counter').text(this.board.generation);
   };
 
   Menu.prototype.changeSpeed = function () {
@@ -100,9 +99,7 @@
   };
 
   Menu.prototype.showInstructions = function () {
-
     $('.instructions-container').attr('id', 'instructing');
-    // debugger
   };
 
   Menu.prototype.hideInstructions = function() {

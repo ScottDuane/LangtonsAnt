@@ -17,7 +17,7 @@
     this.grid = [];
     this.colorNumber = 4;
     this.mode = "paused";
-    this.colors = ["#000", "#4b0082", "#0000cd", "#008000", "#ffff00", "#ff4500", "#ff0000", "#800080"]
+    this.colors = ["#222", "#4b0082", "#0000cd", "#008000", "#ffff00", "#ff4500", "#ff0000", "#800080"]
     this.generateGrid();
   };
 
@@ -31,6 +31,7 @@
   };
 
   Board.prototype.setAntLocation = function(location) {
+    this.grid[location[0]][location[1]] = 1;
     var ant = new LangtonsAnt.Ant({location: location, board: this});
     this.ants.push(ant);
   };
@@ -53,13 +54,20 @@
         ctx.fillStyle = that.colors[that.grid[i][j]];
         ctx.fillRect((i - offsetX) * squareSize + offset[0], (j - offsetY) * squareSize + offset[1], squareSize, squareSize);
 
-        if(that.antLocation[0] === i && that.antLocation[1] === j) {
-          ctx.font = "8px Arial";
-          ctx.strokeText("A", (i - offsetX) * squareSize + offset[0] + squareSize/10, (j - offsetY) * squareSize + offset[1] + squareSize*0.9);
-
-        }
+        // if(that.antLocation[0] === i && that.antLocation[1] === j) {
+        //   ctx.font = "8px Arial";
+        //   ctx.strokeText("A", (i - offsetX) * squareSize + offset[0] + squareSize/10, (j - offsetY) * squareSize + offset[1] + squareSize*0.9);
+        //
+        // }
       })
     })
 
+  };
+
+  Board.prototype.reset = function() {
+    this.ants = [];
+    this.grid = [];
+    this.generation = 0;
+    this.generateGrid();
   }
 }());
