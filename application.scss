@@ -1,0 +1,269 @@
+html, body, section, article,
+h1, h2, p, strong, em, a {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: center;
+  color: inherit;
+  background: transparent;
+}
+
+.header-text {
+  position: relative;
+  height: 125px;
+}
+
+.ant-image {
+  position: relative;
+  float: right;
+  height: 125px;
+  margin-right: 100px;
+}
+
+.ant-2-image {
+  position: relative;
+  float: left;
+  height: 125px;
+  margin-left: 50px;
+}
+body {
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+canvas {
+  // background: black;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.menu-bar-container {
+  color: #444;
+}
+
+button {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 50px;
+  font-size: 18px;
+  border: none;
+  border-radius: 15px;
+  width: 120px;
+  height: 40px;
+  z-index: 1;
+  cursor: pointer;
+  // font-family: 'Josefin Sans', sans-serif;
+  // :hover {
+  //   background-color: #ddd;
+  // }
+}
+
+button:focus {
+  outline: none;
+}
+
+.title-header {
+  font-family: 'Righteous', cursive;
+  font-size: 45px;
+  padding-top: 23px;
+  margin-left: 325px;
+  position: absolute;
+  color: #332;
+  float: left;
+}
+
+.subheader {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 23px;
+  float: left;
+  padding-top: 73px;
+  margin-left: 354px;
+  position: absolute;
+  color: #332;
+}
+
+#start-button {
+  background-color: #00CC00;
+}
+
+#start-button:hover {
+  background-color: #C6FFC6;
+  border: #00CC00 solid 2px;
+
+}
+#stop-button {
+  background-color: #FF3300;
+}
+
+#stop-button:hover {
+  background-color: #FFC2B3;
+  border: #FF3300 solid 2px;
+}
+#reset-button {
+  background-color: #0066FF;
+}
+
+#reset-button:hover {
+  background-color: #B3D1FF;
+  border: #0066FF solid 2px;
+}
+
+#step-button {
+  background-color: #FFD633;
+}
+
+#step-button:hover {
+  background-color: #FFF5CC;
+  border: #FFD633 solid 2px;
+}
+
+#instructions-button {
+  background-color: #9641E5;
+  z-index: 2;
+}
+
+#instructions-button:hover {
+  background-color: #EDDEFB;
+  border: #9641E5 solid 2px;
+
+}
+.input-range-row {
+  display: inline;
+  position: relative;
+}
+
+.input-range-row li {
+  display: inline;
+  position: relative;
+  margin-right: 29px;
+}
+
+.generation-counter {
+  display: block;
+}
+
+.counter {
+  display: inline;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.button-row {
+  margin-bottom: 15px;
+  margin-left: -46px;
+}
+
+.instructions-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #100;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 3;
+  // display: none;
+  transition-property: opacity;
+  transition: 0.2s ease-in-out;
+}
+
+.instructions-box {
+  position: fixed;
+  background-color: #ddd;
+  margin-top: 5%;
+  margin-right: 15%;
+  margin-left: 15%;
+  margin-bottom: 5%;
+  padding-top: 25px;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 25px;
+  border-radius: 10px;
+  border: #bbb solid 2px;
+  z-index: 5;
+  text-align: left;
+  max-height: 80%;
+  overflow: scroll;
+}
+
+.instructions-box a {
+  color: blue;
+}
+
+#instructing {
+  // display: block;
+  visibility: visible;
+  opacity: 0.98;
+  background-color: rgba(17, 0, 0, 0.6);
+  z-index: 3;
+}
+
+.clickable {
+  z-index: 5;
+}
+.inst-body {
+  position: relative;
+  text-align: left;
+}
+
+.inst-title {
+  position: relative;
+  margin-bottom: 7px;
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 900;
+  color: black;
+}
+
+.start-word {
+  color: green;
+}
+
+.stop-word {
+  color: red;
+}
+
+.reset-word {
+  color: blue;
+}
+
+.click-word {
+  color: purple;
+}
+
+.step-word {
+  color: orange;
+}
+
+.instructions-background {
+  opacity: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 4;
+
+}
+
+#back-left{
+  margin-right: 85%;
+}
+
+#back-top {
+  width: 100%;
+  height: 18%;
+}
+
+#back-bottom {
+  margin-top: 95%;
+}
+
+#back-right {
+  margin-left: 85%;
+}
+
+#clickable {
+  z-index: 4;
+}
