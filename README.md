@@ -11,7 +11,7 @@ That's it.  The resulting grid looks something like this:
 
 ![Black grid with purple squares, squares moving according to the above rules](./langton_basic.gif)
 
-A lot of interesting mathematical stuff is known about Langton's Ant.  A good place to start is the [1][Wikipedia page].
+A lot of interesting mathematical stuff is known about Langton's Ant.  A good place to start is the [Wikipedia page](https://en.wikipedia.org/wiki/Langton%27s_ant).
 
 ## Generalizations
 
