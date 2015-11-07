@@ -13,7 +13,6 @@
     this.$stepButton = $body.find('.step-button');
     this.$resetButton = $body.find('.reset-button');
     this.$instructionsButton = $body.find('.instructions-button');
-    this.$zoomBar = $body.find('#zoom-bar');
     this.$speedBar = $body.find('#speed-bar');
     this.$numColorsBar = $body.find('#color-range');
     this.$generationCounter = $body.find('.counter');
@@ -21,12 +20,10 @@
     this.timerId = null;
     this.mode = "paused";
     this.speed = 100;
-    this.$top = $body.find('#back-top');
     this.bindClickHandlers();
   };
 
   Menu.prototype.bindClickHandlers = function () {
-    this.$top.click(this.hideInstructions.bind(this));
     this.$startButton.click(this.startGame.bind(this));
     this.$stopButton.click(this.stopGame.bind(this));
     this.$stepButton.click(this.stepGame.bind(this));
@@ -36,6 +33,7 @@
     this.$instructBackground.click(this.hideInstructions.bind(this));
     this.$instructionsButton.click(this.showInstructions.bind(this));
     this.$speedBar.on('input', this.changeSpeed.bind(this));
+
   };
 
   Menu.prototype.startGame = function () {
@@ -67,6 +65,10 @@
     if (this.mode !== "running") {
       this.board.step();
       $('.counter').text(this.board.generation);
+    } else {
+      this.stopGame();
+      setTimeout(this.stepGame(), 1000);
+      // this.stepGame();
     }
   };
 
@@ -91,11 +93,11 @@
   Menu.prototype.changeNumColors = function (event) {
     var newNumColors = this.$numColorsBar.val();
     $('#num-colors-status').text(newNumColors);
-    this.board.mode = "paused";
-    this.mode = "paused";
+    // this.board.mode = "paused";
+    // this.mode = "paused";
     this.board.colorNumber = parseInt(newNumColors);
-    window.clearInterval(this.timerId);
-    this.board.reset();
+    // window.clearInterval(this.timerId);
+    // this.board.reset();
   };
 
   Menu.prototype.showInstructions = function () {
@@ -104,6 +106,5 @@
 
   Menu.prototype.hideInstructions = function() {
     $('.instructions-container').attr('id', null);
-  }
-
+  };
 })();

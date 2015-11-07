@@ -11,6 +11,7 @@
     this.canvas = document.getElementsByTagName('canvas')[0];
     this.ctx = this.canvas.getContext("2d");
     this.squareSize = 10;
+    this.zoomBar = document.getElementById('zoom-bar');
     this.numX = View.CANVAS_DIM_X / this.squareSize;
     this.numY = View.CANVAS_DIM_Y / this.squareSize;
     this.bindEvents();
@@ -23,6 +24,7 @@
   View.LINE_COLOR = "#444";
 
   View.prototype.bindEvents = function() {
+    $(this.zoomBar).on('input', this.changeZoom.bind(this));
     $(this.canvas).click(this.handleClickEvent.bind(this));
   };
 
@@ -74,5 +76,12 @@
       this.ctx.lineTo(View.CANVAS_DIM_X, this.squareSize*j+offset[1]);
       this.ctx.stroke();
     }
+  };
+
+  View.prototype.changeZoom = function() {
+    var newZoom = $(this.zoomBar).val();
+    this.squareSize = 9/10*newZoom + 10;
+    this.numX = View.CANVAS_DIM_X/this.squareSize;
+    this.numY = View.CANVAS_DIM_Y/this.squareSize;
   }
 }());
