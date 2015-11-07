@@ -9,9 +9,14 @@
     this.location = antOptions.location;
     this.board = antOptions.board;
     this.direction = [0, -1];
+    this.active = true;
   };
 
   Ant.prototype.step = function() {
+    if (!this.active) {
+      return;
+    }
+
     var oldColor = this.board.grid[this.location[0]][this.location[1]];
     this.board.grid[this.location[0]][this.location[1]] = (oldColor + 1) % this.board.colorNumber;
     var newDirection = null;
@@ -37,8 +42,13 @@
       }
     }
 
-    this.direction = newDirection;
-    this.location[0] += this.direction[0];
-    this.location[1] += this.direction[1];
+    if(this.board.inBounds(this.location[0]+this.direction[0], this.location[1]+this.direction[1])) {
+      this.direction = newDirection;
+      this.location[0] += this.direction[0];
+      this.location[1] += this.direction[1];
+    } else {
+      this.active = false;
+    }
+
   }
 }());

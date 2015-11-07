@@ -54,11 +54,6 @@
         ctx.fillStyle = that.colors[that.grid[i][j]];
         ctx.fillRect((i - offsetX) * squareSize + offset[0], (j - offsetY) * squareSize + offset[1], squareSize, squareSize);
 
-        // if(that.antLocation[0] === i && that.antLocation[1] === j) {
-        //   ctx.font = "8px Arial";
-        //   ctx.strokeText("A", (i - offsetX) * squareSize + offset[0] + squareSize/10, (j - offsetY) * squareSize + offset[1] + squareSize*0.9);
-        //
-        // }
       })
     })
 
@@ -69,5 +64,9 @@
     this.grid = [];
     this.generation = 0;
     this.generateGrid();
+  };
+
+  Board.prototype.inBounds = function(xPos, yPos) {
+    return (xPos >= 0 && xPos < this.numX) && (yPos >= 0 && yPos < this.numY);
   }
 }());
